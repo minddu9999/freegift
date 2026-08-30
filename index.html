@@ -3,53 +3,36 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>동영상</title>
+
+  <title>Free Gift</title>
 
   <style>
-    body {
+    html, body {
       margin: 0;
-      background: #111;
+      padding: 0;
+      width: 100%;
+      height: 100%;
+      background: #000;
+    }
+
+    body {
       display: flex;
       justify-content: center;
       align-items: center;
-      min-height: 100vh;
     }
 
-    video {
-      width: 90%;
+    img {
+      display: block;
+      width: 100%;
       max-width: 800px;
+      height: auto;
     }
   </style>
 </head>
 
 <body>
 
-  <video id="video" controls playsinline></video>
-
-  <script>
-    fetch("video.txt")
-      .then(response => {
-        if (!response.ok) {
-          throw new Error("video.txt를 불러오지 못했습니다.");
-        }
-        return response.text();
-      })
-      .then(base64 => {
-        base64 = base64.trim();
-
-        // video.txt에 data:video/mp4;base64,가 없다면 추가
-        if (!base64.startsWith("data:video/mp4;base64,")) {
-          base64 = "data:video/mp4;base64," + base64;
-        }
-
-        document.getElementById("video").src = base64;
-      })
-      .catch(error => {
-        console.error(error);
-        document.body.innerHTML =
-          "<p style='color:white'>동영상을 불러오지 못했습니다.</p>";
-      });
-  </script>
+  <img src="video.webp" alt="Free Gift">
 
 </body>
 </html>
